@@ -13,7 +13,7 @@ import { PLASMIC } from "@/plasmic-init";
 
 export default function PlasmicLoaderPage(props: {
   plasmicData?: ComponentRenderData;
-  queryCache?: Record<string, unknown>;
+  queryCache?: Record<string, any>;
 }) {
   const { plasmicData, queryCache } = props;
   const router = useRouter();
@@ -26,7 +26,6 @@ export default function PlasmicLoaderPage(props: {
       loader={PLASMIC}
       prefetchedData={plasmicData}
       prefetchedQueryData={queryCache}
-      pageRoute={pageMeta.path}
       pageParams={pageMeta.params}
       pageQuery={router.query}
     >
@@ -49,7 +48,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     <PlasmicRootProvider
       loader={PLASMIC}
       prefetchedData={plasmicData}
-      pageRoute={pageMeta.path}
       pageParams={pageMeta.params}
     >
       <PlasmicComponent component={pageMeta.displayName} />
